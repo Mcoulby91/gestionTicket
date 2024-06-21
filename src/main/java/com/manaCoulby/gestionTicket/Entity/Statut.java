@@ -10,7 +10,7 @@ import java.util.List;
 public class Statut {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_Statut;
+    private int idStatut;
     private String titre;
     @OneToMany
     private List<Ticket> ticket;

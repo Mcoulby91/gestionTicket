@@ -10,8 +10,8 @@ import java.util.List;
 public class Categorie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_categorie;
-    private String nom_categorie;
+    private Long idCategorie;
+    private String nomCategorie;
     @OneToMany
     private List<Ticket> ticket;
 }

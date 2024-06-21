@@ -11,8 +11,8 @@ public class Prioriter {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_prioriter;
-    private String nom_prioriter;
+    private int idPrioriter;
+    private String nomPrioriter;
     @OneToMany
     private List<Ticket> ticket;
 }

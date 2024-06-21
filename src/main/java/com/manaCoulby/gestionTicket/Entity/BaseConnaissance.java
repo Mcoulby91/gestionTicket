@@ -10,7 +10,7 @@ import java.util.Date;
 public class BaseConnaissance {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_base_connaissance;
+    private int idBaseConn;
     private String titre;
     private String description;
     private Date date;

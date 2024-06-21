@@ -1,6 +1,8 @@
 package com.manaCoulby.gestionTicket.service;
 
 
+import com.manaCoulby.gestionTicket.Entity.Categorie;
+import com.manaCoulby.gestionTicket.Entity.Prioriter;
 import com.manaCoulby.gestionTicket.Entity.Ticket;
 import com.manaCoulby.gestionTicket.Repository.TicketRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,11 @@ import java.util.Optional;
 public class TicketService {
     @Autowired
     private TicketRepository ticketRepository;
+    @Autowired
+    private CategorieService categorieService;
+    @Autowired
+    private PrioriterService prioriterService;
+
 
     public List<Ticket> getAllTickets() {
         return ticketRepository.findAll();
@@ -23,6 +30,10 @@ public class TicketService {
     }
 
     public Ticket createTicket(Ticket ticket) {
+        Categorie category = this.categorieService.recupererParNom(ticket.getCategorie().getNomCategorie());
+        ticket.setCategorie(category);
+        Prioriter prioriter = this.prioriterService.recupererParNom(ticket.getPrioriter().getNomPrioriter());
+        ticket.setPrioriter(prioriter);
         return ticketRepository.save(ticket);
     }
 
