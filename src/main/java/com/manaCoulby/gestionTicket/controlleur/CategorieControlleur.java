@@ -1,0 +1,46 @@
+package com.manaCoulby.gestionTicket.controlleur;
+
+import com.manaCoulby.gestionTicket.Entity.Categorie;
+import com.manaCoulby.gestionTicket.service.CategorieService;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping(path = "categorie")
+public class CategorieControlleur {
+
+
+   private final CategorieService categorieService;
+
+   public CategorieControlleur(CategorieService categorieService) {
+       this.categorieService = categorieService;
+
+  }
+
+    @PostMapping("creer")
+    public void ajouterCategorie(@RequestBody Categorie categorie) {
+        this.categorieService.creerCategorie(categorie);
+    }
+
+    @GetMapping("liste")
+    public ResponseEntity<List<Categorie>> recupererCategories() {
+        List<Categorie> categories = categorieService.recupererCategories();
+        return ResponseEntity.ok(categories);
+    }
+
+    @PutMapping("modifier/{id}")
+    public ResponseEntity<Categorie> modifierCategorie(@PathVariable Long id, @RequestBody Categorie categorie) {
+      categorie.setIdCategorie(id);
+      Categorie updateCategorie = categorieService.updateCategorie(id, categorie);
+      return ResponseEntity.ok(updateCategorie);
+    }
+
+    @DeleteMapping("{id}")
+    public ResponseEntity<Categorie> supprimerCategorie(@PathVariable Long id) {
+       this.categorieService.deleteById(id);
+       return ResponseEntity.noContent().build();
+    }
+
+}
