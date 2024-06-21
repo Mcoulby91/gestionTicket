@@ -34,4 +34,8 @@ public class TicketService {
     public void deleteTicket(int id) {
         ticketRepository.deleteById(id);
     }
+
+    public Optional<Ticket> findAllById(int id) {
+        return ticketRepository.findAllById(id);
+    }
 }
