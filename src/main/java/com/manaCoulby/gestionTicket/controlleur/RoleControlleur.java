@@ -19,7 +19,7 @@ public class RoleControlleur {
         this.roleService.creerRole(role);
         return ResponseEntity.ok(role);
     }
-    @PutMapping("{id}")
+    @PutMapping("modifier/{id}")
     public ResponseEntity<Role> updateRole(@PathVariable int id, @RequestBody Role role) {
         this.roleService.modifierRole(id, role);
         return ResponseEntity.ok(role);

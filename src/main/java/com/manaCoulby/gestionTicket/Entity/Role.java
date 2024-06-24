@@ -14,7 +14,5 @@ public class Role {
 
     int idRole;
     String roleName;
-    @OneToMany
-    private List<User> users;
 
 }

@@ -2,6 +2,7 @@ package com.manaCoulby.gestionTicket.Entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.springframework.boot.autoconfigure.elasticsearch.ElasticsearchConnectionDetails;
 
 @Entity
 @Data
@@ -15,6 +16,7 @@ public class User {
     private String nom;
     private String email;
     private String password;
-    @ManyToOne
-    private Role role;
+    private String role;
+
+
 }

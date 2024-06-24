@@ -23,7 +23,7 @@ public class TicketControlleur {
         return ResponseEntity.ok(tickets);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("ticketParId/{id}")
     public Optional<Ticket> getTicketById(@PathVariable int id) {
         return ticketService.getTicketById(id);
 
@@ -37,7 +37,7 @@ public class TicketControlleur {
     }
 
 
-    @PutMapping("/{id}")
+    @PutMapping("modifier/{id}")
     public ResponseEntity<Ticket> updateTicket(@PathVariable int id, @RequestBody Ticket ticket) {
         Optional<Ticket> existingTicket = ticketService.findAllById(id);
         if (!existingTicket.isPresent()) {
@@ -55,7 +55,7 @@ public class TicketControlleur {
 ////        return ResponseEntity.ok(updatedTicket);
 //    }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("supprimer/{id}")
     public ResponseEntity<Void> deleteTicket(@PathVariable int id) {
         ticketService.deleteTicket(id);
         return ResponseEntity.noContent().build();
