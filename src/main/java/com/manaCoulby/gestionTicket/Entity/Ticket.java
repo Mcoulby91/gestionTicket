@@ -22,5 +22,7 @@ public class Ticket {
     private Categorie categorie;
     @ManyToOne
     private Prioriter prioriter;
+    @ManyToOne
+    private ReponseTicket reponseTicket;
 
 }

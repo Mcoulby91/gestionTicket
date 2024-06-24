@@ -7,14 +7,12 @@ import java.util.List;
 
 @Entity
 @Data
-public class Role {
-
+public class ReponseTicket {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int idReponseTicket;
+    private String contenueReponse;
 
-    int idRole;
-    String roleName;
     @OneToMany
-    private List<User> users;
-
+    private List<Ticket> ticket;
 }

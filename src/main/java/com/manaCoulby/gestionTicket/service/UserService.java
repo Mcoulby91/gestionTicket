@@ -1,6 +1,9 @@
 package com.manaCoulby.gestionTicket.service;
 
+import com.manaCoulby.gestionTicket.Entity.Categorie;
+import com.manaCoulby.gestionTicket.Entity.Role;
 import com.manaCoulby.gestionTicket.Entity.User;
+import com.manaCoulby.gestionTicket.Repository.RoleRepository;
 import com.manaCoulby.gestionTicket.Repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -15,8 +18,18 @@ import java.util.Optional;
 public class UserService {
     @Autowired
     private final UserRepository userRepository;
+    @Autowired
+    private final RoleService  roleService;
 
     public User createUser(User user) {
+
+        // Récupérer et vérifier le role
+        Role role = this.roleService.findByName(user.getRole().getRoleName());
+        if (role == null) {
+            throw new IllegalArgumentException("Le role spécifiée n'existe pas.");
+        }
+        user.setRole(role);
+
         return userRepository.save(user);
     }
 
