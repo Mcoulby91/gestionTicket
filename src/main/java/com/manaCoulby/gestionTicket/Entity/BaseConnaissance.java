@@ -13,7 +13,7 @@ public class BaseConnaissance {
     private int idBaseConn;
     private String titre;
     private String description;
-    private Date date;
+    private String date;
     @ManyToOne
     private Formateur formateur;
 }

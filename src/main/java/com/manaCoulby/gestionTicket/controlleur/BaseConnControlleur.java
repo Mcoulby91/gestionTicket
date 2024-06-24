@@ -18,8 +18,9 @@ public class BaseConnControlleur {
     public BaseConnService baseConnService;
 
     @PostMapping("creer")
-    public void createBaseConn(@RequestBody BaseConnaissance baseConnaissance) {
+    public ResponseEntity<BaseConnaissance> createBaseConn(@RequestBody BaseConnaissance baseConnaissance) {
          this.baseConnService.creerBaseConnaissance(baseConnaissance) ;
+         return ResponseEntity.ok().body(baseConnaissance);
     }
 
     @GetMapping("liste")

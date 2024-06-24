@@ -20,8 +20,9 @@ public class CategorieControlleur {
   }
 
     @PostMapping("creer")
-    public void ajouterCategorie(@RequestBody Categorie categorie) {
+    public ResponseEntity<Categorie> ajouterCategorie(@RequestBody Categorie categorie) {
         this.categorieService.creerCategorie(categorie);
+        return ResponseEntity.ok().body(categorie);
     }
 
     @GetMapping("liste")

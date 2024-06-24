@@ -12,8 +12,6 @@ public class Ticket {
     private String nom;
     private String description;
     private String date;
-    private String reponse;
-    private String dateReponse;
     @ManyToOne
     private Apprenant apprenant;
     @ManyToOne
